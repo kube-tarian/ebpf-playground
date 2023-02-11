@@ -67,3 +67,4 @@ If that file is empty, you need to install the correct kernel header. It could l
 sudo apt install -y linux-tools-5.15.0-58-generic
 ```
 
+Once it's installed, delete the empty `vmlinux.h` file so that it's recreated with the proper content.
