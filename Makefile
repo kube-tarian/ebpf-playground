@@ -5,6 +5,7 @@ else
 GOBIN=$(shell go env GOBIN)
 endif
 
+ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 # Setting SHELL to bash allows bash commands to be executed by recipes.
 # This is a requirement for 'setup-envtest.sh' in the test target.
@@ -102,7 +103,7 @@ cmd/exec/capture_exec.bpf.o: vmlinuxh libbpfgo-static ## Build eBPF object
 
 ##@ Development
 
-ebpf: cmd/exec/c/capture_exec.bpf.o
+ebpf: cmd/exec/capture_exec.bpf.o
 
 build:
-	CGO_CFLAGS="-I/home/andy/Workspace/kube-tarian/ebpf-playground/output -Wno-unknown-attributes" CGO_LDFLAGS="-lelf -lz /home/andy/Workspace/kube-tarian/ebpf-playground/output/libbpf.a" go build -o ./bin/ ./cmd/exec/
+	CGO_CFLAGS="-I$(ROOT_DIR)/output -Wno-unknown-attributes" CGO_LDFLAGS="-lelf -lz $(ROOT_DIR)/output/libbpf.a" go build -o ./bin/ ./cmd/exec/
