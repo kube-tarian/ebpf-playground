@@ -15,7 +15,7 @@
 If you are running on Ubuntu, you can install those tools with:
 
 ```bash
-apt install -y build-essentials linux-tools-common linux-tools-generic libelf-dev llvm clang
+apt install -y build-essential linux-tools-common linux-tools-generic libelf-dev llvm clang
 ```
 
 ### Clone submodules
@@ -23,6 +23,22 @@ apt install -y build-essentials linux-tools-common linux-tools-generic libelf-de
 ```bash
 git submodule update --init --recursive
 ```
+
+### Build
+
+```bash
+make build
+```
+
+On success, the built program is located in `./bin/exec`
+
+### Run
+
+```bash
+sudo ./bin/exec
+```
+
+It should capture exec syscall and print the information to stdout.
 
 ### Troubleshooting build
 
@@ -47,6 +63,6 @@ Check ./output/vmlinux.h
 If that file is empty, you need to install the correct kernel header. It could look like this, depending on your kernel version:
 
 ```
-sudo apt install -y linux-cloud-tools-5.15.0-58-generic
+sudo apt install -y linux-tools-5.15.0-58-generic
 ```
 

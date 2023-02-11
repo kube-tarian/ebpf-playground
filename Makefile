@@ -105,5 +105,5 @@ cmd/exec/capture_exec.bpf.o: vmlinuxh libbpfgo-static ## Build eBPF object
 
 ebpf: cmd/exec/capture_exec.bpf.o
 
-build:
+build: ebpf
 	CGO_CFLAGS="-I$(ROOT_DIR)/output -Wno-unknown-attributes" CGO_LDFLAGS="-lelf -lz $(ROOT_DIR)/output/libbpf.a" go build -o ./bin/ ./cmd/exec/
