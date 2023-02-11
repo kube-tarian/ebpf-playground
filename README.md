@@ -15,6 +15,7 @@
 If you are running on Ubuntu, you can install those tools with:
 
 ```bash
+apt update
 apt install -y build-essential linux-tools-common linux-tools-generic libelf-dev llvm clang
 ```
 
